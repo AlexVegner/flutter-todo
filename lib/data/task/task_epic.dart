@@ -24,7 +24,7 @@ Stream<dynamic> taskUpdateEpic(
       .ofType(new TypeToken<TaskUpdateAction>())
       .map((action) {
     print("TaskUpdateAction");
-    return TaskUpdateAction(action.item);
+    return TaskUpdateStateAction(action.item);
   });
 }
 
@@ -33,9 +33,9 @@ Stream<dynamic> taskDeleteEpic(
     Stream<dynamic> actions,
     EpicStore<AppState> store) {
   return Observable(actions)
-      .ofType(new TypeToken<TaskUpdateAction>())
+      .ofType(new TypeToken<TaskDeleteAction>())
       .map((action) {
-    print("TaskUpdateAction");
-    return TaskUpdateAction(action.item);
+    print("TaskDeleteAction");
+    return TaskDeleteStateAction(action.item);
   });
 }

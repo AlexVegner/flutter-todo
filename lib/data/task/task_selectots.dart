@@ -20,10 +20,10 @@ class TaskSelectors {
   }
 
   Function update(Store<AppState> store) {
-    return (Task task) => store.dispatch(TaskCreateAction(task));
+    return (Task task) => store.dispatch(TaskUpdateAction(task));
   }
 
   Function delete(Store<AppState> store) {
-    return (Task task) => store.dispatch(TaskCreateAction(task));
+    return (Task task) => store.dispatch(TaskDeleteAction(task));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:todo/data/task/task_model.dart';
+import 'package:todo/utils/task_generator.dart';
 
 class AppState {
   bool isAuthenticated;
@@ -6,9 +7,8 @@ class AppState {
 
   AppState(this.tasks, this.isAuthenticated);
 
-
   factory AppState.initial() {
-    List<Task> tasks = [Task(name: 'Task 1'), Task(name: 'Task 2'), Task(name: 'Task 3')];
+    List<Task> tasks = generateTaskList(4);
     bool isAuthenticated = true;
     var appState = AppState(tasks, isAuthenticated);
     return appState;
