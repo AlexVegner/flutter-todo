@@ -1,6 +1,6 @@
-# todo
+# Flutter Todo app
 
-Todo app
+Flutter + Redux + RxEpic architecture example
 
 ## Getting Started
 
