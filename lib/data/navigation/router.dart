@@ -20,17 +20,7 @@ abstract class Router {
       return null;
     }
     if (pathElements[1] == 'task') {
-      if (pathElements[2] == 'create') {
-        return MaterialPageRoute<bool>(
-          builder: (BuildContext context) => TaskEditPage(Task()),
-        );
-      } else {
-        final int taskId = int.parse(pathElements[2]);
-        Task task = Tasks.selectors.getById(App().store, taskId);
-        return MaterialPageRoute<bool>(
-          builder: (BuildContext context) => TaskEditPage(task),
-        );
-      }
+      return _taskRoute(pathElements);
     }
     return null;
   };
@@ -40,4 +30,18 @@ abstract class Router {
         builder: (BuildContext context) => TaskListPage()
     );
   };
+
+  static MaterialPageRoute<bool> _taskRoute(List<String> pathElements) {
+    if (pathElements[2] == 'create') {
+      return MaterialPageRoute<bool>(
+        builder: (BuildContext context) => TaskEditPage(Task()),
+      );
+    } else {
+      final int taskId = int.parse(pathElements[2]);
+      Task task = Tasks.selectors.getById(App().store, taskId);
+      return MaterialPageRoute<bool>(
+        builder: (BuildContext context) => TaskEditPage(task),
+      );
+    }
+  }
 }
