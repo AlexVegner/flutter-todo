@@ -1,4 +1,4 @@
-# todo
+# Flutter Todo app
 
 Flutter + Redux + RxEpic architecture example
 
