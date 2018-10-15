@@ -11,7 +11,7 @@ class TaskSelectors {
     return store.state.tasks;
   }
 
-  Task getFindFirst(Store<AppState> store, int id) {
+  Task getById(Store<AppState> store, int id) {
     return store.state.tasks.firstWhere((task) => task.id == id);
   }
 }

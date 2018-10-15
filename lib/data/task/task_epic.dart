@@ -6,7 +6,7 @@ import 'package:todo/data/redux/app_state.dart';
 
 import 'task_actions.dart';
 
-Stream<dynamic> taskCreateEpic(
+Stream<dynamic> _taskCreateEpic(
     Stream<dynamic> actions,
     EpicStore<AppState> store) {
   return Observable(actions)
@@ -17,7 +17,7 @@ Stream<dynamic> taskCreateEpic(
   });
 }
 
-Stream<dynamic> taskUpdateEpic(
+Stream<dynamic> _taskUpdateEpic(
     Stream<dynamic> actions,
     EpicStore<AppState> store) {
   return Observable(actions)
@@ -29,7 +29,7 @@ Stream<dynamic> taskUpdateEpic(
 }
 
 
-Stream<dynamic> taskDeleteEpic(
+Stream<dynamic> _taskDeleteEpic(
     Stream<dynamic> actions,
     EpicStore<AppState> store) {
   return Observable(actions)
@@ -40,8 +40,8 @@ Stream<dynamic> taskDeleteEpic(
   });
 }
 
-//List<Epic<State>> taskEpics = [
-//  taskCreateEpic,
-//  taskUpdateEpic,
-//  taskDeleteEpic
-//]
+List taskEpics = List<Epic<AppState>>.from([
+  _taskCreateEpic,
+  _taskUpdateEpic,
+  _taskDeleteEpic,
+]);

@@ -3,7 +3,7 @@ import 'package:todo/data/task/task_actions.dart';
 import 'package:todo/data/task/task_model.dart';
 
 List<Task> _addTaskReducer(List<Task> items, TaskCreateStateAction action) {
-  return new List.from(items)
+  return List<Task>.from(items)
     ..add(action.item);
 }
 
@@ -12,12 +12,12 @@ List<Task> _updateTaskReducer(List<Task> items, TaskUpdateStateAction action) {
   if (index == -1) {
     index = items.length - 1;
   }
-  return new List.from(items).where((item) => item.id != action.item.id).toList().cast<Task>()
+  return List<Task>.from(items).where((item) => item.id != action.item.id).toList()
     ..insert(index , action.item);
 }
 
 List<Task> _deleteTaskReducer(List<Task> items, TaskDeleteStateAction action) {
-  return new List.from(items).where((item) => item.id != action.item.id).toList().cast<Task>();
+  return List<Task>.from(items).where((item) => item.id != action.item.id).toList();
 }
 
 List<Task> tasksReducer(List<Task> items, Action action) {
