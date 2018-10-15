@@ -4,7 +4,11 @@ import 'package:todo/data/navigation/navigation.dart';
 import 'package:todo/data/redux/app_state.dart';
 import 'package:todo/data/redux/store.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:todo/data/task/task_helper.dart';
+import 'package:todo/data/task/task_model.dart';
+import 'package:todo/pages/tasks/task_edit_page.dart';
 import 'package:todo/pages/tasks/task_list_page.dart';
+import 'package:todo/utils/custom_route.dart';
 
 
 void main() {
@@ -47,24 +51,27 @@ class AppWidget extends StatelessWidget {
             routes: {
               '/tasks' : (BuildContext context) => TaskListPage(),
             },
-//          onGenerateRoute: (RouteSettings settings) {
-////            final List<String> pathElements = settings.name.split('/');
-////            if (pathElements[0] != '') {
-////              return null;
-////            }
-////            if (pathElements[1] == 'product') {
-////              final String productId = pathElements[2];
-////              final Product product =
-////              _model.allProducts.firstWhere((Product product) {
-////                return product.id == productId;
-////              });
-////              return CustomRoute<bool>(
-////                builder: (BuildContext context) =>
-////                !_isAuthenticated ? AuthPage() : ProductPage(product),
-////              );
-////            }
-//            return null;
-//          },
+          onGenerateRoute: (RouteSettings settings) {
+            final List<String> pathElements = settings.name.split('/');
+            if (pathElements[0] != '') {
+              return null;
+            }
+            if (pathElements[1] == 'task') {
+              if (pathElements[2] == 'create') {
+                print('create');
+                return MaterialPageRoute<bool>(
+                  builder: (BuildContext context) => TaskEditPage(Task()),
+                );
+              } else {
+                final int taskId = int.parse(pathElements[2]);
+                Task task = Tasks.selectors.getFindFirst(App().store, taskId);
+                return MaterialPageRoute<bool>(
+                  builder: (BuildContext context) => TaskEditPage(task),
+                );
+              }
+            }
+            return null;
+          },
 //          onUnknownRoute: (RouteSettings settings) {
 //            return MaterialPageRoute(
 //                builder: (BuildContext context) => MyHomePage()

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:todo/data/app/app.dart';
 import 'package:todo/data/redux/app_state.dart';
+import 'package:todo/data/task/task_helper.dart';
 import 'package:todo/data/task/task_model.dart';
 import 'package:todo/utils/task_generator.dart';
 import 'package:todo/widgets/page_widget.dart';
@@ -32,6 +34,10 @@ class TaskListWidget extends StatefulWidget implements TitleProtocol {
 
 class _StateTaskListWidget extends State<TaskListWidget> {
 
+  void _create() {
+    Navigator.pushNamed<bool>(context, "/task/create");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,11 +51,11 @@ class _StateTaskListWidget extends State<TaskListWidget> {
             children: <Widget>[
               Expanded(
                 child: ListView.builder(
-                    itemCount: widget.viewModel.tasks.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final Task task = widget.viewModel.tasks[index];
-                      return TaskListItemWidget(task, widget.viewModel);
-                    }
+                  itemCount: widget.viewModel.tasks.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final Task task = widget.viewModel.tasks[index];
+                    return TaskListItemWidget(task, widget.viewModel);
+                  }
                 ),
               ),
             ],
@@ -57,8 +63,8 @@ class _StateTaskListWidget extends State<TaskListWidget> {
         ),
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: () => widget.viewModel.create(Task(name: generateName())),
-        tooltip: 'Increment',
+        onPressed: _create,
+        tooltip: 'Create',
         child: new Icon(Icons.add),
       ),
     );

@@ -11,19 +11,7 @@ class TaskSelectors {
     return store.state.tasks;
   }
 
-  Task getFindFirst(Store<AppState> store, String name) {
-    return store.state.tasks.firstWhere((task) => task.name == name);
-  }
-
-  Function create(Store<AppState> store) {
-    return (Task task) => store.dispatch(TaskCreateAction(task));
-  }
-
-  Function update(Store<AppState> store) {
-    return (Task task) => store.dispatch(TaskUpdateAction(task));
-  }
-
-  Function delete(Store<AppState> store) {
-    return (Task task) => store.dispatch(TaskDeleteAction(task));
+  Task getFindFirst(Store<AppState> store, int id) {
+    return store.state.tasks.firstWhere((task) => task.id == id);
   }
 }

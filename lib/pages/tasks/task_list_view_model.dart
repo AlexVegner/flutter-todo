@@ -16,6 +16,6 @@ class TaskListViewModel extends ViewModel {
 
   TaskListViewModel(Store<AppState> store):
     tasks = Tasks.selectors.getAll(store),
-    create = Tasks.selectors.create(store),
-    delete = Tasks.selectors.delete(store);
+    create = ((Task task) => store.dispatch(Tasks.actions.create(task))),
+    delete = ((Task task) => store.dispatch(Tasks.actions.delete(task)));
 }

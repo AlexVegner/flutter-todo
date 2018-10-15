@@ -8,12 +8,16 @@ List<Task> _addTaskReducer(List<Task> items, TaskCreateStateAction action) {
 }
 
 List<Task> _updateTaskReducer(List<Task> items, TaskUpdateStateAction action) {
-  return new List.from(items).where((item) => item.name != action.item.name).toList().cast<Task>()
-    ..add(action.item);
+  int index = items.indexWhere((task) => task.id == action.item.id);
+  if (index == -1) {
+    index = items.length - 1;
+  }
+  return new List.from(items).where((item) => item.id != action.item.id).toList().cast<Task>()
+    ..insert(index , action.item);
 }
 
 List<Task> _deleteTaskReducer(List<Task> items, TaskDeleteStateAction action) {
-  return new List.from(items).where((item) => item.name != action.item.name).toList().cast<Task>();
+  return new List.from(items).where((item) => item.id != action.item.id).toList().cast<Task>();
 }
 
 List<Task> tasksReducer(List<Task> items, Action action) {

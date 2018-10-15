@@ -1,19 +1,21 @@
 import 'package:todo/data/task/task_model.dart';
 
-int _count = 1;
+int _count = 0;
 
 String generateName() {
   return "Task${_count++}";
 }
 
-Task generateTask() {
-  return Task(name: generateName());
+Task generateTask({String name}) {
+  final index = _count++;
+  final String _name = name ?? "Task${index}" ;
+  return Task(name: _name, id: index);
 }
 
 List<Task> generateTaskList(int n) {
   List<Task> list = [];
   for (int i = 0; i < n; i++) {
-    list.add(Task(name: generateName()));
+    list.add(generateTask());
   }
   return list;
 }
