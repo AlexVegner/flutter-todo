@@ -36,8 +36,9 @@ class _StateTaskEditPage extends State<TaskEditPage> {
     } else {
       App().dispatch(Tasks.actions.create, generateTask(name: name));
     }
-    App().navigatorKey.currentState.pop(true);
+    App().navigation.pop(true);
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class _StateTaskEditPage extends State<TaskEditPage> {
                 padding: const EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
                 child: Row(
                   children: <Widget>[
-                    Text('Username'),
+                    Text('Task name'),
                     Padding(padding: EdgeInsets.only(right: 10.0),),
                     Expanded(
                       child: TextField(

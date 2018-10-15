@@ -18,6 +18,8 @@ class App {
   App.ini (this.store, this.navigatorKey) {
     _singleton = this;
   }
+
+  NavigatorState get navigation => navigatorKey.currentState;
   
   void dispatch(Function dispatchFunc, Object object) {
     store.dispatch(dispatchFunc(object));

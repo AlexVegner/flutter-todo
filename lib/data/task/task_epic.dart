@@ -39,3 +39,9 @@ Stream<dynamic> taskDeleteEpic(
     return TaskDeleteStateAction(action.item);
   });
 }
+
+//List<Epic<State>> taskEpics = [
+//  taskCreateEpic,
+//  taskUpdateEpic,
+//  taskDeleteEpic
+//]
