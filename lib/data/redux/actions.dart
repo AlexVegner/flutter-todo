@@ -11,6 +11,4 @@ abstract class Action<T> {
   final T item;
 
   Action(this.item);
-
-  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
