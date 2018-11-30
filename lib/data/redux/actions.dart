@@ -1,3 +1,5 @@
+import 'package:todo/data/redux/model_contract.dart';
+
 abstract class ModelCollection<T> {
   Action<T> create(T model);
   Action<T> update(T model);
@@ -7,7 +9,7 @@ abstract class ModelCollection<T> {
   Action<T> stateDelete(T model);
 }
 
-abstract class Action<T> {
+abstract class Action<T> with ModelContract {
   final T item;
 
   Action(this.item);

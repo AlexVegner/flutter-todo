@@ -1,7 +1,6 @@
 import 'package:todo/data/redux/actions.dart';
 import 'package:todo/data/task/task_contract.dart';
 import 'package:todo/data/task/task_model.dart';
-import 'package:todo/data/redux/model_contract.dart';
 
 class TaskActions extends ModelCollection<Task> {
   @override
@@ -23,26 +22,26 @@ class TaskActions extends ModelCollection<Task> {
   TaskDeleteStateAction stateDelete(Task model) => TaskDeleteStateAction(model);
 }
 
-class TaskCreateAction extends Action<Task> with ModelContract, TaskContract {
+class TaskCreateAction extends Action<Task> with TaskContract {
   TaskCreateAction(Task value) : super(value);
 }
 
-class TaskUpdateAction extends Action<Task> with ModelContract, TaskContract {
+class TaskUpdateAction extends Action<Task> with TaskContract {
   TaskUpdateAction(Task value) : super(value);
 }
 
-class TaskDeleteAction extends Action<Task> with ModelContract, TaskContract {
+class TaskDeleteAction extends Action<Task> with TaskContract {
   TaskDeleteAction(Task value) : super(value);
 }
 
-class TaskCreateStateAction extends Action<Task> with ModelContract, TaskContract {
+class TaskCreateStateAction extends Action<Task> with TaskContract {
   TaskCreateStateAction(Task value) : super(value);
 }
 
-class TaskUpdateStateAction extends Action<Task> with ModelContract, TaskContract {
+class TaskUpdateStateAction extends Action<Task> with TaskContract {
   TaskUpdateStateAction(Task value) : super(value);
 }
 
-class TaskDeleteStateAction extends Action<Task> with ModelContract, TaskContract {
+class TaskDeleteStateAction extends Action<Task> with TaskContract {
   TaskDeleteStateAction(Task value) : super(value);
 }
