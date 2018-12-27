@@ -14,7 +14,6 @@ class TaskWSRest implements TaskWS {
     final response = await client.get(
       ENDPOINT,
     );
-    print("___getAll_ ${json.decode(response.body)}");  
     Iterable<Map<String, dynamic>> iterable = json.decode(response.body).cast<Map<String, dynamic>>();
     List<Task> tasks = iterable.map((Map<String, dynamic> model)=> Task.fromJson(model)).toList();
     return tasks;
@@ -33,7 +32,6 @@ class TaskWSRest implements TaskWS {
     final body = entity.toJson()
       ..remove(Task.FIELD_ID)
       ..remove(Task.FIELD_CREATED_DATE);
-    print("___create, body: ${body}");
     final response = await client.post(
       ENDPOINT,
       body: body,
@@ -45,7 +43,6 @@ class TaskWSRest implements TaskWS {
   Future<Task> update(Task entity) async {
     final body = entity.toJson()
       ..remove(Task.FIELD_ID);
-    print("___update, body: ${body}");
     final response = await client.put(
       '$ENDPOINT/${entity.id}',
       body: body,
