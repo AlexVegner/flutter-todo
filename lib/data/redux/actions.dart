@@ -1,3 +1,5 @@
+import 'package:todo/data/redux/model_contract.dart';
+
 abstract class ModelCollection<T> {
 
   Action init();
@@ -13,7 +15,7 @@ abstract class ModelCollection<T> {
   Action<T> stateGetId(T model);
 }
 
-abstract class Action<T> {
+abstract class Action<T> with ModelContract {
   final T item;
 
   Action(this.item);

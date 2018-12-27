@@ -2,7 +2,6 @@ import 'package:todo/data/conf.dart';
 import 'package:todo/utils/string_utils.dart';
 import 'package:todo/data/redux/model_contract.dart';
 
-
 mixin TaskContract implements ModelContract {
   
   @override
