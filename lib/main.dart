@@ -11,6 +11,7 @@ void main() {
   final navigatorKey = createNavigatorKey();
 
   final app = App.ini(store, navigatorKey);
+  app.initEpics();
 
   runApp(new AppWidget(
     app: app,

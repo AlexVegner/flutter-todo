@@ -24,6 +24,14 @@ class App {
   void dispatch(Function dispatchFunc, Object object) {
     store.dispatch(dispatchFunc(object));
   }
+
+  void dispatchAction(Action action) {
+    store.dispatch(dispatch);
+  }
+
+  void initEpics() {
+    store.dispatch(Tasks.actions.getAll());
+  }
 }
 
 typedef DispatchFunc<T> = Action<T> Function<T>(T o);

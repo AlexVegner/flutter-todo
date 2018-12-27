@@ -37,7 +37,7 @@ abstract class Router {
         builder: (BuildContext context) => TaskEditPage(Task()),
       );
     } else {
-      final int taskId = int.parse(pathElements[2]);
+      final String taskId = pathElements[2];
       Task task = Tasks.selectors.getById(App().store, taskId);
       return MaterialPageRoute<bool>(
         builder: (BuildContext context) => TaskEditPage(task),

@@ -7,8 +7,8 @@ String generateName() {
 }
 
 Task generateTask({String name}) {
-  final index = _count++;
-  final String _name = name ?? "Task${index}" ;
+  final index = (_count++).toString();
+  final String _name = name ?? "Task$index" ;
   return Task(name: _name, id: index);
 }
 

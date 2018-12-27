@@ -5,5 +5,5 @@ mixin ModelContract {
   /// Use plural
   String get name => "";
   String get tableName => capitalizeFirst(name);
-  String get api => "/$name";
+  String get url => "/api";
 }

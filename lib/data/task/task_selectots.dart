@@ -1,6 +1,5 @@
 import 'package:redux/redux.dart';
 import 'package:todo/data/redux/app_state.dart';
-import 'package:todo/data/task/task_actions.dart';
 import 'package:todo/data/task/task_model.dart';
 
 class TaskSelectors {
@@ -11,7 +10,7 @@ class TaskSelectors {
     return store.state.tasks;
   }
 
-  Task getById(Store<AppState> store, int id) {
+  Task getById(Store<AppState> store, String id) {
     return store.state.tasks.firstWhere((task) => task.id == id);
   }
 }

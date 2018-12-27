@@ -23,6 +23,8 @@ dependencies:
   redux: ^3.0.0
   flutter_redux: ^0.5.2
   redux_epics: ^0.10.2
+  http: ^0.12.0
+  # reselect: ^0.4.0
 
 dev_dependencies:
   flutter_test:

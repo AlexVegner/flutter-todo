@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:todo/data/app/app.dart';
 import 'package:todo/data/task/task_helper.dart';
 import 'package:todo/data/task/task_model.dart';
-import 'package:todo/utils/task_generator.dart';
 import 'package:todo/widgets/page_widget.dart';
 
 class TaskEditPage extends StatefulWidget implements TitleProtocol {
@@ -32,9 +31,9 @@ class _StateTaskEditPage extends State<TaskEditPage> {
   void _save() {
     String name =  _nameController.text;
     if (widget.task.id != null) {
-      App().dispatch(Tasks.actions.update, Task(name: name, id: widget.task.id));
+      App().dispatch(Tasks.actions.update, Task(name: name, id: widget.task.id, createdDate: widget.task.createdDate));
     } else {
-      App().dispatch(Tasks.actions.create, generateTask(name: name));
+      App().dispatch(Tasks.actions.create, Task(name: name));
     }
     App().navigation.pop(true);
   }
