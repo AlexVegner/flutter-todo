@@ -6,6 +6,7 @@ import 'package:todo/data/api/api.dart';
 // import 'package:todo/data/redux/actions.dart';
 import 'package:todo/data/redux/app_state.dart';
 import 'package:todo/data/task/task_helper.dart';
+import 'package:todo/data/task/task_state.dart';
 import 'task_actions.dart';
 
 Stream<dynamic> _taskInitEpic(
@@ -26,7 +27,7 @@ Stream<dynamic> _taskGetAllEpic(
       (action) => Api()
           .tasks
           .getAll()
-          .then((taskList) => Tasks.actions.stateGetAll(taskList))
+          .then((taskList) => TaskServerErrorAction(ErrorDialog("Error: _taskCreateEpic"))) //Tasks.actions.stateGetAll(taskList))
           .catchError((error) => print("Error: ${error.toString()}")));
 }
 
@@ -51,7 +52,7 @@ Stream<dynamic> _taskCreateEpic(
           .tasks
           .create(action.item)
           .then((task) => Tasks.actions.stateCreate(task))
-          .catchError((error) => print("Error: ${error.toString()}")));
+          .catchError((error) => TaskServerErrorAction(ErrorDialog("Error: _taskCreateEpic"))));
 }
 
 Stream<dynamic> _taskUpdateEpic(

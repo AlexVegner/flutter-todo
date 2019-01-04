@@ -6,7 +6,7 @@ import 'package:todo/data/redux/app_state.dart';
 import 'package:todo/data/task/task_reducer.dart';
 
 AppState appStateReducer(AppState state, action) => new AppState(
-    tasksReducer(state.tasks, action),
+    tasksReducer(state.taskData, action),
     true,
 );
 

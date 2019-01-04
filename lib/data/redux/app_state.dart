@@ -1,15 +1,17 @@
 import 'package:todo/data/task/task_model.dart';
+import 'package:todo/data/task/task_state.dart';
 
 class AppState {
   bool isAuthenticated;
-  List<Task> tasks;
+  
+  TaskState taskData;
 
-  AppState(this.tasks, this.isAuthenticated);
+  AppState(this.taskData, this.isAuthenticated);
 
   factory AppState.initial() {
-    List<Task> tasks = [];
     bool isAuthenticated = true;
-    var appState = AppState(tasks, isAuthenticated);
+    var taskData = TaskState.initial();
+    var appState = AppState(taskData, isAuthenticated);
     return appState;
   }
 }

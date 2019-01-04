@@ -1,6 +1,7 @@
 import 'package:todo/data/redux/actions.dart';
 import 'package:todo/data/task/task_contract.dart';
 import 'package:todo/data/task/task_model.dart';
+import 'package:todo/data/task/task_state.dart';
 
 class TaskActions extends ModelCollection<Task> {
 
@@ -80,4 +81,8 @@ class TaskGetAllStateAction extends Action<List<Task>> with TaskContract {
 
 class TaskGetIdStateAction extends Action<Task> with TaskContract {
   TaskGetIdStateAction(Task value) : super(value);
+}
+
+class TaskServerErrorAction extends Action<ErrorDialog> with TaskContract {
+  TaskServerErrorAction(ErrorDialog value) : super(value);
 }
